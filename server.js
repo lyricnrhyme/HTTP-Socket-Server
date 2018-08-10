@@ -1,83 +1,138 @@
+// jshint esversion:6
+const sanity = "You're not crazy!";
+console.log(sanity);
+
+/* ACTUAL CODE */
+
+// stuff required to run the stuff we want
 const net = require('net');
+const fs = require('fs');
+// const path = require('path');
 
-let clients = [];
+// set this stuff now so it's easier to use later
+const serverName = 'https://www.ihateNET.com';
+const PORT = process.env.PORT || 8080;
+const timeStamp = new Date();
+const files = {
+  '/index.html' : '/index.html',
+  '/helium.html' : '/helium.html',
+  '/hydrogen.html' : '/hydrogen.html',
+  '/styles.css' : '/styles.css'
+};
 
-const server = net.createServer(client => {
-  console.log('CL client.remoteAddress =', client.remoteAddress)
-  console.log('CL client.remotePort =', client.remotePort)
-  console.log('CL client.username =', client.username)
+// create the server which handles connection requests
+const server = net.createServer((request) => {
+  request.setEncoding('utf8');
 
-  // Identify client and push to clients list:
-  client.id = client.remoteAddress + ':' + client.remotePort;
-  client.username;
-  client.usernameHasBeenSet = false;
-  clients.push(client);
-  console.log('CL client =', client)
-  console.log('CL CONNECTED: ' + client.id);
-  console.log('CL CLIENT CONNECTED');
-  
-  client.write('\nWELCOME TO SPARTASERVE');
-  client.write('\n')
-  client.write('\nWhat is Your Name')
-
-   // Handle incoming data:
-  client.on('data', data => {
-    console.log('CL data =', data)
-    const dataStr = data.toString().slice(0, -1);
-    console.log('CL dataStr =',dataStr)
-    if (!client.username) {
-      if (dataStr.toLowerCase().includes('admin')) {
-        client.write(`\nKeyword "ADMIN" reserved. Choose another username: `);
-      } else {
-        client.username = dataStr;
-        client.write(`\nHello ${dataStr}\n`);
-      }
-    }
-    handleIncomingData(client, dataStr);
-
-    console.log(data.toString());
-
-    const msg = data.toString();
-
-    clients.forEach(socket => {
-      if(client !== socket) {
-        socket.write(msg);
-      }
-    });
+  request.on('data', (data) => {
+    console.log('Client has connected!');
+    console.log('request:', data);
+    generateResponse(request, data);
   });
-
-  clients.push(client);
-
-  // Remove client when connection has been closed:
-  client.on('end', function () {
-    let i = clients.indexOf(client);
-    console.log('\nCL i =', i)
-    clients.splice(i,1);
-    console.log(`Client ${i} Session Ended`)
-  })
-
-   // Allow server to send "ADMIN" messages to all clients:
-   process.stdin.on('data', data => {
-    client.write(`[ADMIN] ${data.toString().slice(0, -1)}`);
+  // async, runs more than once...
+  request.on('end', () => {
+    console.log('Client has disconnected');
   });
-
 });
 
-server.listen(6969, () => {
-  console.log('Server listening on port 6969');
+server.on('error', (err) => {
+  throw err;
 });
 
-function handleIncomingData(client, data) {
-  if (client.username && !client.usernameHasBeenSet) {
-    // Client's first input will be set as the client's username:
-    console.log(client.id + ' SET USERNAME: ' + client.username);
-    client.usernameHasBeenSet = true;
-  } else if (client.usernameHasBeenSet) {
-    // Client's message will be logged and dispatched to other clients:
-    clients.forEach(client => {
-      if (client === client) return;
-      client.write(`${client.username}: "${data}"`);
+server.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
+
+/* FUNCTIONS */
+
+// does stuff...
+function generateResponse(request, data) {
+  let requestInfo = getRequestInfo(data);
+  let method = requestInfo.method;
+  let uri = requestInfo.uri;
+
+  // file reader with information formatter inside ASYNC function
+  if (files.hasOwnProperty(uri)) {
+    fs.readFile(`./source${uri}`, 'utf8', (err, information) => {
+      if (err) throw err;
+
+      if (method === 'GET' || method === 'HEAD') {
+
+        request.write(convertInfo(requestInfo, information, true), (err) => {
+          if (err) throw err;
+
+          request.end();
+        });
+      }
     });
-    console.log('SERVER BCAST FROM ' + client.id + ' : ' + data);
+
+  } else { 
+    fs.readFile(`./source/error.html`, 'utf8', (err, information) => {
+      if (err) throw err;
+
+      request.write(convertInfo(requestInfo, information, false), (err) => {
+        if (err) throw err;
+
+        request.end();
+      });  
+    });
   }
+}
+
+// blah blah
+function convertInfo(info, data, validRequest) {
+  let method = info.method;
+  let uri = info.uri;
+  let type = info.type;
+  let server = info.server;
+  let date = info.date;
+  let content_type = info.content_type;
+  let connection = info.connection;
+
+  let responseString = `Server: ${server}
+Date: ${date}
+Content-Type: ${content_type}
+Content-Length: ${data.length}
+Connection: ${connection}
+`;
+
+  if (validRequest) {
+
+    if (method === 'GET') return `${type} 200 OK
+${responseString}
+${data}`;
+
+    else if (method === 'HEAD') return `${type} 200 OK
+${responseString}`;
+
+  } else return `${type} 404 NOT FOUND
+${responseString}
+${data}`;
+}
+
+// returns Method and URI as strings in an object
+function getRequestInfo(data) {
+  let tempData = data.split('\r\n');
+  let methodLine = tempData[0].split(' ');
+  let method = methodLine[0];
+  let uri = methodLine[1];
+  let type = methodLine[2];
+  let content_type;
+
+  // handles any pesky links ending with '/'
+  if (uri === '/') uri = '/index.html';
+  else if (uri[uri.length-1] === '/') uri = uri.slice(0, (uri.length-1));
+
+  if (uri.includes('html')) content_type = 'text/html; charset=utf-8';
+  else if (uri.includes('css')) content_type = 'text/css; charset=utf-8';
+
+  return {
+    method : method,
+    uri : uri,
+    type : type,
+    server : 'Mozilla/5.0 (Macintosh; Intel Mac OSX)',
+    date : timeStamp,
+    content_type : content_type,
+    connection : 'keep-alive'
+  };
 }
