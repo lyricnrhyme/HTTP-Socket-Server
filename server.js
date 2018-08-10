@@ -20,5 +20,7 @@ const server = net.createServer((client) => {
 });
 
 server.listen(8080, () => { 
-    console.log("Server listening on port 6969");
+    console.log("Server listening on port 8080");
 });
+
+console.log("test em");
