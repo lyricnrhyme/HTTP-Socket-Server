@@ -1,13 +1,12 @@
-const net = require("net");
+const net = require('net');
 
-const client = net.createConnection(2877, "34.219.80.229", () => {
-    client.write("WELCOME!");
-    client.on("data", data => {
-        // console.log(data.toString());
-    });
-    process.stdin.pipe(client);
-    
+let hydrogen = require(".assets/hydrogen.js")
 
+const client = net.createConnection(8080, '0.0.0.0', () => {
+  client.on('data', data => {
+    console.log(data.toString());
+  });
+  process.stdin.pipe(client);
 });
 
 
