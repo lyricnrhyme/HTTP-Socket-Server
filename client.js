@@ -1,8 +1,22 @@
 const net = require('net');
 
+<<<<<<< HEAD
 let hydrogen = require(".assets/hydrogen.js")
+=======
+console.log('\n\nCL process.argv =')
+console.log(process.argv)
+
+let header = "GET /apply HTTP/1.1\n\nhost: localhost:8080"
+// let slashIndex = process.argv[2].indexOf("/");
+// let host = process.argv[2].slice(0, slashIndex);
+// let path = process.argv[2].slice(slashIndex);
+>>>>>>> 784d6cf5a45af2fe27902f0470d0bf94f22bfb76
 
 const client = net.createConnection(8080, '0.0.0.0', () => {
+
+  client.write(header)
+  // client.write("GET /apply HTTP/1.1\nhost: localhost:8080");
+  // client.write("GET " + path + " HTTP/1.1\nhost: " + host);
   client.on('data', data => {
     console.log(data.toString());
   });
