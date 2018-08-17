@@ -1,6 +1,6 @@
 const net = require('net');
 const port = 8080;
-const {index, hydrogen, helium, lithium, beryllium, boron, carbon, nitrogen, oxygen, fluorine, neon, style, domdom, error} = require('./home.js');
+const {index, hydrogen, helium, lithium, beryllium, boron, carbon, nitrogen, oxygen, fluorine, neon, sodium, magnesium, aluminum, silicon, phosphorus, sulfur, chlorine, argon, style, domdom, error} = require('./home.js');
 // const {helium, error, hydrogen, index, style} = require('./home.js');
 
 const server = net.createServer(client => {
@@ -79,6 +79,54 @@ const server = net.createServer(client => {
         }
         else if (uri === '/neon') {
             const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${neon}`;
+
+            client.write(message);
+            client.end();
+        }
+        else if (uri === '/sodium') {
+            const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${sodium}`;
+
+            client.write(message);
+            client.end();
+        }
+        else if (uri === '/magnesium') {
+            const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${magnesium}`;
+
+            client.write(message);
+            client.end();
+        }
+        else if (uri === '/aluminum') {
+            const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${aluminum}`;
+
+            client.write(message);
+            client.end();
+        }
+        else if (uri === '/silicon') {
+            const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${silicon}`;
+
+            client.write(message);
+            client.end();
+        }
+        else if (uri === '/phosphorus') {
+            const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${phosphorus}`;
+
+            client.write(message);
+            client.end();
+        }
+        else if (uri === '/sulfur') {
+            const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${sulfur}`;
+
+            client.write(message);
+            client.end();
+        }
+        else if (uri === '/chlorine') {
+            const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${chlorine}`;
+
+            client.write(message);
+            client.end();
+        }
+        else if (uri === '/argon') {
+            const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${argon}`;
 
             client.write(message);
             client.end();

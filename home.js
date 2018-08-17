@@ -43,6 +43,27 @@ let index = `<!DOCTYPE html>
     <li>
         <a href="/sodium">Sodium</a>
     </li>
+    <li>
+        <a href="/magnesium">Magnesium</a>
+    </li>
+    <li>
+        <a href="/aluminum">Aluminum</a>
+    </li>
+    <li>
+        <a href="/silicon">Silicon</a>
+    </li>
+    <li>
+        <a href="/phosphorus">Phosphorus</a>
+    </li>
+    <li>
+        <a href="/sulfur">Sulfur</a>
+    </li>
+    <li>
+        <a href="/chlorine">Chlorine</a>
+    </li>
+    <li>
+        <a href="/argon">Argon</a>
+    </li>
   </ol>
 </body>
 </html>`
@@ -240,6 +261,118 @@ let sodium = `<!DOCTYPE html>
 </body>
 </html>`
 
+let magnesium = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Elements - Magnesium</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Magnesium</h1>
+  <h2>Mg</h2>
+  <h3>Atomic number 12</h3>
+  <p>Magnesium is a chemical element with symbol Mg and atomic number 12. It is a shiny gray solid which bears a close physical resemblance to the other five elements in the second column (group 2, or alkaline earth metals) of the periodic table: all group 2 elements have the same electron configuration in the outer electron shell and a similar crystal structure.</p>
+  <p><a href="/">back</a></p>
+</body>
+</html>`
+
+let aluminum = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Elements - Aluminum</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Aluminum</h1>
+  <h2>Al</h2>
+  <h3>Atomic number 13</h3>
+  <p>Aluminium or aluminum is a chemical element with symbol Al and atomic number 13. It is a silvery-white, soft, nonmagnetic and ductile metal in the boron group. By mass, aluminium makes up about 8% of the Earth's crust; it is the third most abundant element after oxygen and silicon and the most abundant metal in the crust, though it is less common in the mantle below. The chief ore of aluminium is bauxite. Aluminium metal is so chemically reactive that native specimens are rare and limited to extreme reducing environments. Instead, it is found combined in over 270 different minerals.</p>
+  <p><a href="/">back</a></p>
+</body>
+</html>`
+
+let silicon = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Elements - Silicon</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Silicon</h1>
+  <h2>Si</h2>
+  <h3>Atomic number 14</h3>
+  <p>Silicon is a chemical element with symbol Si and atomic number 14. It is a hard and brittle crystalline solid with a blue-grey metallic lustre; and it is a tetravalent metalloid and semiconductor. It is a member of group 14 in the periodic table: carbon is above it; and germanium, tin, and lead are below it. It is relatively unreactive. Because of its large chemical affinity for oxygen, it was not until 1823 that Jöns Jakob Berzelius was first able to prepare it and characterize it in pure form. Its melting and boiling points of 1414 °C and 3265 °C respectively are the second-highest among all the metalloids and nonmetals, being only surpassed by boron. Silicon is the eighth most common element in the universe by mass, but very rarely occurs as the pure element in the Earth's crust. It is most widely distributed in dusts, sands, planetoids, and planets as various forms of silicon dioxide (silica) or silicates. Over 90% of the Earth's crust is composed of silicate minerals, making silicon the second most abundant element in the Earth's crust (about 28% by mass) after oxygen.</p>
+  <p><a href="/">back</a></p>
+</body>
+</html>`
+
+let phosphorus = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Elements - Phosphorus</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Phosphorus</h1>
+  <h2>P</h2>
+  <h3>Atomic number 15</h3>
+  <p>Phosphorus is a chemical element with symbol P and atomic number 15. Elemental phosphorus exists in two major forms, white phosphorus and red phosphorus, but because it is highly reactive, phosphorus is never found as a free element on Earth. It has a concentration in the Earth's crust of about one gram per kilogram (compare copper at about 0.06 grams). With few exceptions, minerals containing phosphorus are in the maximally oxidized state as inorganic phosphate rocks.</p>
+  <p><a href="/">back</a></p>
+</body>
+</html>`
+
+let sulfur = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Elements - Sulfur</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Sulfur</h1>
+  <h2>S</h2>
+  <h3>Atomic number 16</h3>
+  <p>Sulfur or sulphur is a chemical element with symbol S and atomic number 16. It is abundant, multivalent, and nonmetallic. Under normal conditions, sulfur atoms form cyclic octatomic molecules with a chemical formula S8. Elemental sulfur is a bright yellow crystalline solid at room temperature. Chemically, sulfur reacts with all elements except for gold, platinum, iridium, tellurium, and the noble gases.</p>
+  <p><a href="/">back</a></p>
+</body>
+</html>`
+
+let chlorine = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Elements - Chlorine</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Chlorine</h1>
+  <h2>Cl</h2>
+  <h3>Atomic number 17</h3>
+  <p>Chlorine is a chemical element with symbol Cl and atomic number 17. The second-lightest of the halogens, it appears between fluorine and bromine in the periodic table and its properties are mostly intermediate between them. Chlorine is a yellow-green gas at room temperature. It is an extremely reactive element and a strong oxidising agent: among the elements, it has the highest electron affinity and the third-highest electronegativity, behind only oxygen and fluorine.</p>
+  <p><a href="/">back</a></p>
+</body>
+</html>`
+
+let argon = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Elements - Argon</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Argon</h1>
+  <h2>Ar</h2>
+  <h3>Atomic number 18</h3>
+  <p>Argon is a chemical element with symbol Ar and atomic number 18. It is in group 18 of the periodic table and is a noble gas. Argon is the third-most abundant gas in the Earth's atmosphere, at 0.934% (9340 ppmv). It is more than twice as abundant as water vapor (which averages about 4000 ppmv, but varies greatly), 23 times as abundant as carbon dioxide (400 ppmv), and more than 500 times as abundant as neon (18 ppmv). Argon is the most abundant noble gas in Earth's crust, comprising 0.00015% of the crust.</p>
+  <p><a href="/">back</a></p>
+</body>
+</html>`
+
 let style = `@import url(http://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab);
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -380,6 +513,13 @@ module.exports = {
     fluorine,
     neon,
     sodium,
+    magnesium,
+    aluminum,
+    silicon,
+    phosphorus,
+    sulfur,
+    chlorine,
+    argon,
     style: style,
     // domdom: domdom,
     error: error
